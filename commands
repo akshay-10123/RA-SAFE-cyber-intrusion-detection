@@ -1,0 +1,45 @@
+# Run ALL algorithms — cyber, physical, combined (drone1)
+# Copy-paste in PowerShell
+
+$py = "C:\uav-venv\Scripts\python.exe"
+$root = "C:\Users\HP\OneDrive\Documents\Cyber-Physical-Intrusion-Detection-System-for-Unmanned-Aerial-Vehicles"
+cd $root
+
+# 1) Dataset
+& $py scripts\prepare_dataset.py
+
+# 2) ALL models — one command (recommended)
+& $py scripts\run_all_experiments.py
+
+# OR quick test (~30-60 min)
+# & $py scripts\run_all_experiments.py --quick
+
+# 3) Dashboard
+& $py -m streamlit run dashboard/app.py
+
+
+# ========== MANUAL (individual commands) ==========
+
+# --- 1D-CNN ---
+cd "$root\1D-CNN -based IDS"
+& $py 1D_CNN.py --fusion=drone1_cyber --metrics_title=drone1_cyber --epochs=50
+& $py 1D_CNN.py --fusion=drone1_physical --metrics_title=drone1_physical --epochs=50
+& $py 1D_CNN.py --fusion=drone1_combined --metrics_title=drone1_combined --epochs=50
+
+# --- SVM ---
+cd "$root\SVM-based IDS"
+& $py svm.py --fusion=drone1_cyber --png=drone1_cyber.png --metrics_title=drone1_cyber --max_samples=8000
+& $py svm.py --fusion=drone1_physical --png=drone1_physical.png --metrics_title=drone1_physical --max_samples=8000
+& $py svm.py --fusion=drone1_combined --png=drone1_combined.png --metrics_title=drone1_combined --max_samples=8000
+
+# --- FNN ---
+cd "$root\FNN-based IDS"
+& $py FNN.py --fusion=drone1_cyber --title_name=drone1_cyber --epochs=30
+& $py FNN.py --fusion=drone1_physical --title_name=drone1_physical --epochs=30
+& $py FNN.py --fusion=drone1_combined --title_name=drone1_combined --epochs=30
+
+# --- LSTM ---
+cd "$root\LSTM-based IDS"
+& $py LSTM.py --fusion=drone1_cyber --metrics_title=drone1_cyber --epochs=10 --max_samples=5000 --cv_folds=2
+& $py LSTM.py --fusion=drone1_physical --metrics_title=drone1_physical --epochs=10 --max_samples=5000 --cv_folds=2
+& $py LSTM.py --fusion=drone1_combined --metrics_title=drone1_combined --epochs=10 --max_samples=5000 --cv_folds=2

@@ -1,0 +1,99 @@
+{
+  "model": "RA-SAFE",
+  "fusion": "central_combined",
+  "n_params": 4465,
+  "inference_ms_per_sample": 0.06259827208577187,
+  "accuracy": 0.7837673399853979,
+  "precision_macro": 0.7937402896389307,
+  "recall_macro": 0.7967501243457409,
+  "f1_macro": 0.7928061214677062,
+  "f1_weighted": 0.7767660309563263,
+  "ece_uncalibrated": 0.029783813749301967,
+  "ece_calibrated": 0.020202571696160514,
+  "brier_score": 0.2841109335422516,
+  "negative_log_likelihood": 0.45093645158466383,
+  "temperature": 0.8553126159395422,
+  "selective_coverage": 0.43891457775614506,
+  "selective_risk": 0.05711117271971167,
+  "accepted_accuracy": 0.9428888272802883,
+  "abstention_rate": 0.5610854222438549,
+  "conf_threshold": 0.65,
+  "rel_threshold": 0.25,
+  "per_class": {
+    "benign": {
+      "precision": 0.8608879492600423,
+      "recall": 0.989310009718173,
+      "f1": 0.9206420981234457,
+      "support": 2058.0
+    },
+    "dos": {
+      "precision": 0.6114519427402862,
+      "recall": 0.6304691618344754,
+      "f1": 0.6208149493900856,
+      "support": 1897.0
+    },
+    "replay": {
+      "precision": 0.6585365853658537,
+      "recall": 0.5269645608628659,
+      "f1": 0.5854493580599144,
+      "support": 1947.0
+    },
+    "evil_twin": {
+      "precision": 0.9498249708284714,
+      "recall": 0.972520908004779,
+      "f1": 0.961038961038961,
+      "support": 1674.0
+    },
+    "fdi": {
+      "precision": 0.888,
+      "recall": 0.8644859813084113,
+      "f1": 0.8760852407261247,
+      "support": 642.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      2036,
+      9,
+      4,
+      5,
+      4
+    ],
+    [
+      165,
+      1196,
+      527,
+      2,
+      7
+    ],
+    [
+      154,
+      751,
+      1026,
+      2,
+      14
+    ],
+    [
+      1,
+      0,
+      0,
+      1628,
+      45
+    ],
+    [
+      9,
+      0,
+      1,
+      77,
+      555
+    ]
+  ],
+  "class_names": [
+    "benign",
+    "dos",
+    "replay",
+    "evil_twin",
+    "fdi"
+  ],
+  "timestamp": "2026-11-16T16:52:13Z"
+}

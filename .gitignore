@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+*.npy
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated datasets (run: python scripts/prepare_dataset.py)
+data/dataset_updated/
+data/dataset_central/
+
+# LSTM preprocessed arrays (regenerated during training)
+LSTM-based IDS/np_arrays/
+
+# Trained Keras models (regenerate with the trainer scripts)
+**/*.keras
+!models/checkpoints/*.keras
